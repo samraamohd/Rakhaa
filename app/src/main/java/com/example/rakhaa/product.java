@@ -37,6 +37,8 @@ public class product extends AppCompatActivity {
         rec = findViewById(R.id.rec);
         mLayoutManager = new GridLayoutManager(this, 3);
         rec.setLayoutManager(mLayoutManager);
+        RecyclerView.LayoutManager mLayoutManager = new GridLayoutManager(this, 3);
+        rec.setLayoutManager(mLayoutManager);
         rec.setLayoutManager(new LinearLayoutManager(this));
         new LinearSnapHelper().attachToRecyclerView(rec);
 
@@ -44,9 +46,10 @@ public class product extends AppCompatActivity {
             @Override
             public void onDone(List<Product> list) {
                 for (Product product : list) {
-                    Toast.makeText(product.this,list.toString(), Toast.LENGTH_SHORT).show();
+                   // Toast.makeText(product.this,list.toString(), Toast.LENGTH_SHORT).show();
                     for (int c=0;c<list.size();c++) {
                         rec.setAdapter(new productAdapter(list));
+
                     }
                 }
             }
@@ -72,6 +75,7 @@ public class product extends AppCompatActivity {
             com.example.rakhaa.models.Product pro = list.get(position);
            // holder.img.setImageResource(Integer.parseInt(pro.getImage()));
             holder.txt.setText(pro.getArName());
+
         }
 
         @Override
@@ -81,10 +85,10 @@ public class product extends AppCompatActivity {
 
         class productHolder extends RecyclerView.ViewHolder{
             TextView txt;
-           // ImageView img;
+            ImageView img;
             public productHolder(@NonNull View itemView) {
                 super(itemView);
-                //img = itemView.findViewById(R.id.img);
+                img = itemView.findViewById(R.id.img);
                 txt = itemView.findViewById(R.id.txt);
             }
         }
