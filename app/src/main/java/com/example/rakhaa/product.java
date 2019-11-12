@@ -2,6 +2,7 @@ package com.example.rakhaa;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.LinearSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
@@ -26,6 +27,7 @@ import java.util.List;
 
 public class product extends AppCompatActivity {
 
+    GridLayoutManager mLayoutManager;
     RecyclerView rec;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class product extends AppCompatActivity {
         setContentView(R.layout.activity_product);
 
         rec = findViewById(R.id.rec);
+        mLayoutManager = new GridLayoutManager(this, 3);
+        rec.setLayoutManager(mLayoutManager);
         rec.setLayoutManager(new LinearLayoutManager(this));
         new LinearSnapHelper().attachToRecyclerView(rec);
 
