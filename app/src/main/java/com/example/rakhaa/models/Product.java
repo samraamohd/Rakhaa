@@ -227,7 +227,7 @@ public class Product{
 	@Override
  	public String toString(){
 		return 
-			"Product{" + 
+			/*"com.example.rakhaa.Product{" +
 			"image = '" + image + '\'' + 
 			",qR = '" + qR + '\'' + 
 			",price_cost = '" + priceCost + '\'' + 
@@ -248,6 +248,6 @@ public class Product{
 			",id = '" + id + '\'' + 
 			",vindor_ids = '" + vindorIds + '\'' + 
 			",country_id = '" + countryId + '\'' + 
-			"}";
+			"}";*/id;
 		}
 }

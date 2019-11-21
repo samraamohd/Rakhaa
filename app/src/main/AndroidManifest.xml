@@ -11,18 +11,33 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".product">
+        <activity android:name=".details"></activity>
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/search" />
+
+        <activity
+            android:name=".ui.Catogry"
+            android:label="@string/title_activity_catogry"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".MainProd"
+            android:label="@string/title_activity_main_prod">
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/search" />
+        </activity>
+        <activity android:name=".Product" />
+        <activity android:name=".Main" />
+        <activity android:name=".register" />
+        <activity android:name=".login" />
+        <activity android:name=".MainActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".Main" />
-        <activity android:name=".register"></activity>
-        <activity android:name=".login"></activity>
-        <activity android:name=".MainActivity">
-
         </activity>
     </application>
 

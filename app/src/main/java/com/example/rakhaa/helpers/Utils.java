@@ -10,10 +10,13 @@ import com.android.volley.toolbox.Volley;
 import com.example.rakhaa.interfaces.ArrayListener;
 import com.example.rakhaa.interfaces.ObjectListener;
 import com.example.rakhaa.interfaces.handlerListener;
+import com.example.rakhaa.models.Categories;
 import com.example.rakhaa.models.Locality;
 import com.example.rakhaa.models.Login;
+import com.example.rakhaa.models.Pcat;
 import com.example.rakhaa.models.Product;
 import com.example.rakhaa.models.Regist;
+import com.example.rakhaa.models.Search;
 import com.example.rakhaa.models.State;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -111,5 +114,55 @@ public class Utils {
             }
         });
     }
+
+    public void getcategry(HashMap<String,String> data, ArrayListener<Categories> listener){
+        makeRequest(Endpoint.Categories, data, new handlerListener() {
+            @Override
+            public void onDone(String msg) {
+
+                listener.onDone(new Gson().fromJson(msg,new TypeToken<List<Categories>>(){}.getType()));
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getpcat(String id, ArrayListener<Pcat> listener){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("sub_category_id",id);
+        makeRequest(Endpoint.Pcat, map, new handlerListener() {
+            @Override
+            public void onDone(String msg) {
+
+                listener.onDone(new Gson().fromJson(msg,new TypeToken<List<Pcat>>(){}.getType()));
+            }
+
+            @Override
+            public void onError(String error) {
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    public void getsearch(String id, String name, ArrayListener<Search> listener){
+        HashMap<String,String> map = new HashMap<>();
+        map.put("category_id",id);
+        map.put("name",name);
+        makeRequest(Endpoint.product_search, map, new handlerListener() {
+            @Override
+            public void onDone(String msg) {
+
+                listener.onDone(new Gson().fromJson(msg,new TypeToken<List<Search>>(){}.getType()));
+            }
+            @Override
+            public void onError(String error) {
+                Toast.makeText(context, error, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
 
 }

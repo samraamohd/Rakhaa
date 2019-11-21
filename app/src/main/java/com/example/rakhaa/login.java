@@ -2,8 +2,11 @@ package com.example.rakhaa;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -17,6 +20,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.example.rakhaa.helpers.Utils;
 import com.example.rakhaa.interfaces.ObjectListener;
 import com.example.rakhaa.models.Login;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -56,6 +60,7 @@ Button login;
         login.setOnClickListener(view -> {
 
             log();
+
            /* cancel = false;
 
             if (TextUtils.isEmpty(name.getText().toString())) {
@@ -74,8 +79,8 @@ Button login;
 
             if (!cancel) {
                 dialog.setMessage("Waiting...");
-                dialog.show();*/
-
+                dialog.show();
+*/
 
 
                /* dialog.dismiss();
@@ -100,8 +105,16 @@ Button login;
 
         new Utils(login.this).getLogin(map, object -> {
             Log.d("req", map.toString());
-            Log.d("login", "Sucsses" + object.toString());
-            Toast.makeText(login.this, "Sucsses"+object.toString(), Toast.LENGTH_SHORT).show();
+            Log.d("login", "Sucsses" + object.isErorr());
+            boolean s= (object.isErorr());
+            if (s!=true) {
+                Toast.makeText(login.this, "Sucsses" , Toast.LENGTH_SHORT).show();
+
+                Intent i = new Intent(login.this, Main.class);
+                startActivity(i);
+            }else {
+                Toast.makeText(login.this, "Error" + "Your data incorect! ", Toast.LENGTH_SHORT).show();
+            }
         });
 
     }

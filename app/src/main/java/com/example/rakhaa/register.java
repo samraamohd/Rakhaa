@@ -1,6 +1,7 @@
 package com.example.rakhaa;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -103,6 +104,8 @@ public class register extends AppCompatActivity {
         new Utils(register.this).getRegist(map, object -> {
             Log.d("req", map.toString());
             Log.d("regist", "Sucsses" + object.toString());
+            Intent i=new Intent(register.this,Main.class);
+            startActivity(i);
             Toast.makeText(register.this, object.toString(), Toast.LENGTH_SHORT).show();
         });
 
